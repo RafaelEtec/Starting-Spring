@@ -31,5 +31,12 @@ public class ExemploController {
         return resposta;
     }
     
-    
+    @GetMapping("/exemplo-view-obj")
+    public ModelAndView exemplosViewObj() {
+        ModelAndView mv = new ModelAndView("mensagem-view");
+        mv.addObject("nome", "Rafael Goulart");
+        mv.addObject("idade", 20);
+        mv.addObject("curso", "TADS");
+        return mv;
+    }
 }
