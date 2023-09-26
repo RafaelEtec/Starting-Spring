@@ -3,6 +3,8 @@ package com.senac.demo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,7 +16,7 @@ public class ExemploController {
     @GetMapping("/mensagem1")
     public String saudar1(Model modelo) {
         System.out.println(" |||||||||||||||||||| Coisa ||||||||||||||||||| ");
-        return "mensagem-view";
+        return "form";
     }
     
     @GetMapping("/mensagem2")
@@ -37,6 +39,21 @@ public class ExemploController {
         mv.addObject("nome", "Rafael Goulart");
         mv.addObject("idade", 20);
         mv.addObject("curso", "TADS");
+        return mv;
+    }
+    
+    @GetMapping("/form")
+    public ModelAndView formSpring() {
+        ModelAndView mv = new ModelAndView("form");
+        mv.addObject("test", new Test());
+        return mv;
+    }
+    
+    @PostMapping("/salvar")
+    public ModelAndView salvar(@ModelAttribute Test dadosRecebidos) {
+        
+        ModelAndView mv = new ModelAndView("resultado");
+        mv.addObject("test", dadosRecebidos);
         return mv;
     }
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulário</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <form th:object="${test}" method="post">
+                <label for="name">Nome: </label>
+                <input name="name" type="text" th:field="*{name}"><br>
+                <label for="email">E-mail</label>
+                <input name="email" type="text" th:field="*{email}">
+                <a th:href="@{/exemplo/salvar}" method="submit">Enviar</a>
+            </form>
+        </div>
+    </body>
+</html>
